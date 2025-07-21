@@ -7,6 +7,7 @@ class AuthController {
             $_SESSION['user'] = $username;
             return true;
         }
+        
         return false;
     }
 
