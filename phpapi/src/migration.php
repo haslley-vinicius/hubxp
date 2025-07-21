@@ -4,6 +4,10 @@ require_once __DIR__ . '/database.php';
 $db = db();
 
 $db->exec("
+    CREATE DATABASE IF NOT EXISTS phpapi;
+
+    USE phpapi;
+
     CREATE TABLE IF NOT EXISTS users (
         id INT AUTO_INCREMENT PRIMARY KEY,
         username VARCHAR(50) NOT NULL UNIQUE,
@@ -19,6 +23,7 @@ $db->exec("
 
 // Cria usuário padrão
 $stmt = $db->prepare("SELECT COUNT(*) FROM users");
+
 if ($stmt->execute() && $stmt->fetchColumn() == 0) {
     $db->prepare("INSERT INTO users (username, password) VALUES (?, ?)")
         ->execute(['admin', password_hash('1234', PASSWORD_DEFAULT)]);
