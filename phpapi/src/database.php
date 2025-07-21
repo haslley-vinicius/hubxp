@@ -1,13 +1,24 @@
 <?php
+namespace Src;
 
-require_once __DIR__ . '/config.php';
+use PDO;
+use Dotenv\Dotenv;
 
-function db(): PDO {
-    static $pdo;
-    if ($pdo === null) {
-        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS, [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-        ]);
+class Database {
+    private static $conn;
+
+    public static function connect(): PDO {
+        if (!self::$conn) {
+            $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
+            $dotenv->load();
+
+            self::$conn = new PDO(
+                "mysql:host=" . $_ENV['DB_HOST'] . ";dbname=" . $_ENV['DB_NAME'],
+                $_ENV['DB_USER'],
+                $_ENV['DB_PASS']
+            );
+            self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        return self::$conn;
     }
-    return $pdo;
 }
