@@ -13,7 +13,13 @@ require_once __DIR__ . '/Controllers/ProductController.php';
 
 if ($uri === '/login' && $method === 'POST') {
     $data = $_POST;
-    echo AuthController::login($data['username'], $data['password']) ? 'OK' : 'FAIL';
+    echo AuthController::login($data['username'], $data['password']) ? 'Login done successfully' : 'Login failed';
+    return;
+}
+
+if ($uri === '/logout' && $method === 'GET') {
+    AuthController::logout();
+    echo 'Logged out successfully';
     return;
 }
 
@@ -24,28 +30,43 @@ if (!AuthController::check()) {
 }
 
 switch ($uri) {
+    case substr($uri, -1) === '/':
+        if ($method === 'GET') {
+            http_response_code(200);
+            echo "Route not found or localhost test";
+        }
+        break;
+
     case '/products':
         if ($method === 'GET') {
             $search = $_GET['search'] ?? null;
-            echo json_encode(ProductController::index($search));
+            $data = ProductController::index($search);
+            echo sizeof($data) ? json_encode($data) : 'Product(s) not found';
         } elseif ($method === 'POST') {
             $data = json_decode(file_get_contents('php://input'), true);
             ProductController::store($data);
-            echo 'Created';
+            echo 'Product created successfully';
         }
+        break;
+
+    case '/products/delete-all':
+        if ($method === 'DELETE') {
+            echo ProductController::deleteAll() ? 'Products deleted successfully' : 'Failure on deleting products';
+        } 
+
         break;
 
     case preg_match('#^/products/(\d+)$#', $uri, $matches) ? true : false:
         $id = $matches[1];
-        if ($method === 'GET') {
-            echo json_encode(ProductController::show($id));
+        if ($method === 'GET') {            
+            $data = json_encode(ProductController::show($id));
+            echo $data !== 'false' ? $data : 'Product not found';        
         } elseif ($method === 'PUT') {
             $data = json_decode(file_get_contents('php://input'), true);
-            ProductController::update($id, $data);
-            echo 'Updated';
+            echo ProductController::update($id, $data) ? 'Product updated successfully' : 'Product not found';
+            // echo 'Product updated';
         } elseif ($method === 'DELETE') {
-            ProductController::delete($id);
-            echo 'Deleted';
+            echo ProductController::delete($id) !== false ? 'Product deleted successfully' : 'Product not found';
         }
         break;
 

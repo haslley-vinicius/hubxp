@@ -1,0 +1,241 @@
+type: collection.insomnia.rest/5.0
+name: PHPAPI collection
+meta:
+  id: wrk_ad4d0c411e3b47d1a5fe1895add456bd
+  created: 1753141206467
+  modified: 1753198918493
+  description: ""
+collection:
+  - url: "{{ base_url }}/products/1"
+    name: Deletar Produto por ID
+    meta:
+      id: req_413f0a87e41d4ce69611d1cf28b82329
+      created: 1620000000000
+      modified: 1753198950919
+      isPrivate: false
+      description: ""
+      sortKey: -1753141273224
+    method: DELETE
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ base_url }}/products/1"
+    name: Ver Produto por ID
+    meta:
+      id: req_518ef564db2d45508b9059b0e2a352c2
+      created: 1620000000000
+      modified: 1753198964830
+      isPrivate: false
+      description: ""
+      sortKey: -1753141273219
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ base_url }}/products?search=Produto"
+    name: Buscar Produto por Nome
+    meta:
+      id: req_a8d0f5bd40b64382a81f26a07e917ec3
+      created: 1620000000000
+      modified: 1753198985157
+      isPrivate: false
+      description: ""
+      sortKey: -1753141273217
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/login"
+    name: Login
+    meta:
+      id: req_be4f0811e621411ebc18fe8605e62ce3
+      created: 1620000000000
+      modified: 1753191035926
+      isPrivate: false
+      description: ""
+      sortKey: -1753141273208
+    method: POST
+    body:
+      mimeType: multipart/form-data
+      params:
+        - name: username
+          value: admin
+          disabled: false
+        - name: password
+          value: "1234"
+          disabled: false
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ base_url }}/products"
+    name: Criar Produto
+    meta:
+      id: req_bf3b9ad5ccf44892895adc6e05515af5
+      created: 1620000000000
+      modified: 1753197905138
+      isPrivate: false
+      description: ""
+      sortKey: -1753141273215
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "name": "Produto Teste",
+          "price": 99.90
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ base_url }}/products/1"
+    name: Atualizar Produto por ID
+    meta:
+      id: req_c79cf24b1e1847d2b88fc74dec467d66
+      created: 1620000000000
+      modified: 1753198959183
+      isPrivate: false
+      description: ""
+      sortKey: -1753141273222
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "name": "Produto Atualizado",
+          "price": 129.90
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ base_url }}/products"
+    name: Listar Produtos
+    meta:
+      id: req_d00fb4e11be04d839b3167f614213b59
+      created: 1620000000000
+      modified: 1753155317399
+      isPrivate: false
+      description: ""
+      sortKey: -1753141273212
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}"
+    name: Localhost test
+    meta:
+      id: req_4ba3edcf0ec2474fbea82a0266e7b758
+      created: 1753141206541
+      modified: 1753198757940
+      isPrivate: false
+      description: ""
+      sortKey: -1753141206541
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.3.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/logout"
+    name: Logout
+    meta:
+      id: req_d631a610d724402d915f42c053d7ed13
+      created: 1753194640331
+      modified: 1753194679341
+      isPrivate: false
+      description: ""
+      sortKey: -1753141273210
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.3.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ base_url }}/products/delete-all"
+    name: "Deletar Todos "
+    meta:
+      id: req_e1d0c6f0786c4e55b6b1bf962d8c4db0
+      created: 1753196965729
+      modified: 1753196975341
+      isPrivate: false
+      description: ""
+      sortKey: -1753141273223
+    method: DELETE
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_894054913c6a75b26f2437d0a744d6eb0b9993bd
+    created: 1753141206485
+    modified: 1753199038124
+environments:
+  name: Base Environment
+  meta:
+    id: env_894054913c6a75b26f2437d0a744d6eb0b9993bd
+    created: 1753141206481
+    modified: 1753190833300
+    isPrivate: false
+  data:
+    base_url: http://localhost:8000

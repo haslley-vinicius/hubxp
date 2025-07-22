@@ -41,15 +41,36 @@ class ProductController {
 
     public static function update($id, $data) {
         $db = Database::connect();
-        $stmt = $db->prepare("UPDATE products SET name = ?, price = ? WHERE id = ?");
 
-        return $stmt->execute([$data['name'], $data['price'], $id]);
+        $stmt = $db->prepare("SELECT * FROM products WHERE id = ?");
+        $stmt->execute([$id]);
+
+        if ($stmt->fetch(PDO::FETCH_ASSOC) !== false) {
+            $stmt = $db->prepare("UPDATE products SET name = ?, price = ? WHERE id = ?");
+
+            return $stmt->execute([$data['name'], $data['price'], $id]);
+        }
+
+        return false;
     }
 
     public static function delete($id) {
         $db = Database::connect();
-        $stmt = $db->prepare("DELETE FROM products WHERE id = ?");
-        
-        return $stmt->execute([$id]);
+
+        $stmt = $db->prepare("SELECT * FROM products WHERE id = ?");
+        $stmt->execute([$id]);
+
+        if ($stmt->fetch(PDO::FETCH_ASSOC) !== false) {
+            $stmt = $db->prepare("DELETE FROM products WHERE id = ?");
+            return $stmt->execute([$id]);
+        } 
+
+        return false;
+    }
+
+    public static function deleteAll() {
+        $db = Database::connect();
+        $stmt = $db->prepare("TRUNCATE TABLE products");
+        return $stmt->execute();
     }
 }

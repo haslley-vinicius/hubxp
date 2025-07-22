@@ -9,10 +9,13 @@ class AuthController {
         }
         
         return false;
+
+        return true;
     }
 
     public static function logout(): void {
         session_destroy();
+        return;
     }
 
     public static function check(): bool {
