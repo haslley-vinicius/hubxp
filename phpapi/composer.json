@@ -1,0 +1,20 @@
+{
+    "name": "haslley/phpapi",
+    "autoload": {
+        "psr-4": {
+            "Haslley\\Phpapi\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Haslley Vinicius"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11"
+    }
+}
