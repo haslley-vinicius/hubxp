@@ -57,6 +57,6 @@ _Abaixo seguem os passos para a instalação das dependências e setups necessá
 ## Usage
 
 Aplicação possui frontend para as telas de login e painel de gerenciamento de produtos, mas também
-pode usada via collection no "request client"de sua escolha.
+pode usada via collection no "request client" de sua escolha.
 
-OBS: Para ambas assituações faz-se necessário estar logado, sendo o login padrão (amin - 1234)
+OBS: Para ambas as situações faz-se necessário estar logado, sendo o login padrão (amin - 1234)
