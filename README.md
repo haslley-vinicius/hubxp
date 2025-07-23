@@ -48,7 +48,7 @@ _Abaixo seguem os passos para a instalação das dependências e setups necessá
    ```phpapi_insomnia_collection.har ou phpapi_insomnia_collection.yaml
    ambos os arquivos estão presentes na pasta "requests_collections" para importação
    ```
-5. Executar a aplicação com o servidor local 
+5. Executar a aplicação com o servidor local, ficará acessível pelo endpoint: http://localhost:8000/
    (OBS: É necessário estar na pasta "phpapi" que encontra-se dentro da pasta raíz "hubxp")
    ```sh
    php -S localhost:8000 -t public
