@@ -17,7 +17,7 @@ final class ProductTest extends TestCase {
     }
 
     public function testCanSearchProducts(): void {
-        $products = ProductController::index('Test');
+        $products = ProductController::index($search='Test');
         $this->assertIsArray($products);
     }
 }

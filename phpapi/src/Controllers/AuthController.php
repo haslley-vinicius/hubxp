@@ -9,8 +9,6 @@ class AuthController {
         }
         
         return false;
-
-        return true;
     }
 
     public static function logout(): void {
