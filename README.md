@@ -23,7 +23,7 @@ Também possui testes para criação, listagem e busca de produto utilizando PHP
 OBS: É necessário ter instalados: PHP8+ e Composer.
 
 * Instalar as dependências PHP via composer;
-* Criar um database como o nome phpapi apenas com usuário ("root") e senha em branco ("");
+* Criar um database como o nome "phpapi" apenas com usuário ("root") e senha em branco ("");
 -> (PS: Caso deseje utilizar outras configurações para o DB, faz-se necessário alterar o arquivo .env)  
 * Rodar as migrations;
 * Usar a request collection.
